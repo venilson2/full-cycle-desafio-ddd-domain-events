@@ -1,6 +1,6 @@
 import EventInterface from "../../@sahred/event/event.interface";
 
-export class CustomerChangeAddress implements EventInterface {
+export class CustomerChangeAddressEvent implements EventInterface {
   readonly occurred_on: Date
 
   constructor(

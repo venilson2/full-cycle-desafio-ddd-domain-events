@@ -1,7 +1,7 @@
-import { CustomerChangeAddress } from "../../entities/customer-change-address";
+import { CustomerChangeAddressEvent } from "../../entities/customer-change-address.event.";
 
 export default class SendConsoleLogHandler {
-  handle(customer: CustomerChangeAddress) {
+  handle(customer: CustomerChangeAddressEvent) {
     console.log(`Endereço do cliente: ${customer.id}, ${customer.name} alterado para: ${customer.address}`);
   }
 }

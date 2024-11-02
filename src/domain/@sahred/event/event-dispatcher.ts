@@ -3,6 +3,7 @@ import EventHandlerInterface from "./event-handler.interface";
 import eventInterface from "./event.interface";
 
 export default class EventDispatcher implements EventDispatcherInterface {
+
   private handlersMap: { [eventName: string]: EventHandlerInterface[] } = {};
 
   register(eventName: string, handler: EventHandlerInterface): void {
@@ -19,5 +20,20 @@ export default class EventDispatcher implements EventDispatcherInterface {
         handlersMap.handle(event);
       });
     }
+  }
+
+  unregister(eventName: string, eventHandler: EventHandlerInterface): void {
+    if (this.handlersMap[eventName]) {
+      this.handlersMap[eventName] = this.handlersMap[eventName].filter(
+        (handler) => handler !== eventHandler
+      );
+    }
+  }
+  unregisterAll(): void {
+    this.handlersMap = {};
+  }
+
+  get getEventHandlers(): { [eventName: string]: EventHandlerInterface[] } {
+    return this.handlersMap;
   }
 }

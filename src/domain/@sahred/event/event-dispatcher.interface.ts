@@ -4,4 +4,6 @@ import eventInterface from "./event.interface";
 export default interface EventDispatcherInterface {
   register(eventName: string, handler: EventHandlerInterface): void
   dispatch(event: eventInterface): void;
+  unregister(eventName: string, eventHandler: EventHandlerInterface): void;
+  unregisterAll(): void;
 }
