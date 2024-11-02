@@ -1,4 +1,4 @@
-import { CustomerCreated } from "../customer-created.event";
+import { CustomerCreated } from "../../entities/customer-created.event";
 
 export default class SendConsoleLog1Handler {
   handle(customer: CustomerCreated) {
