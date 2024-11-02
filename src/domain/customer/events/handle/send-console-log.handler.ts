@@ -1,4 +1,4 @@
-import { CustomerChangeAddress } from "../customer-change-address";
+import { CustomerChangeAddress } from "../../entities/customer-change-address";
 
 export default class SendConsoleLogHandler {
   handle(customer: CustomerChangeAddress) {

@@ -1,16 +1,23 @@
-export default class EventDispatcher {
-  private handlersMap: { [eventName: string]: Function[] } = {};
+import EventDispatcherInterface from "./event-dispatcher.interface";
+import EventHandlerInterface from "./event-handler.interface";
+import eventInterface from "./event.interface";
 
-  register(eventName: string, handler: Function) {
+export default class EventDispatcher implements EventDispatcherInterface {
+  private handlersMap: { [eventName: string]: EventHandlerInterface[] } = {};
+
+  register(eventName: string, handler: EventHandlerInterface): void {
     if (!this.handlersMap[eventName]) {
       this.handlersMap[eventName] = [];
     }
     this.handlersMap[eventName].push(handler);
   }
 
-  dispatch(event: any) {
+  dispatch(event: eventInterface): void {
     const eventName = event.constructor.name;
-    const handlers = this.handlersMap[eventName] || [];
-    handlers.forEach(handler => handler(event));
+    if (this.handlersMap[eventName]) {
+      this.handlersMap[eventName].forEach((handlersMap) => {
+        handlersMap.handle(event);
+      });
+    }
   }
 }
