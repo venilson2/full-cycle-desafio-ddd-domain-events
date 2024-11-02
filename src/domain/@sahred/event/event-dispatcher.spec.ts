@@ -33,7 +33,7 @@ describe('Domain events tests', () => {
       eventDispatcher.getEventHandlers["CustomerCreatedEvent"][0]
     ).toMatchObject(eventHandler);
 
-    const customerCreatedEvent = new CustomerCreatedEvent();
+    const customerCreatedEvent = new CustomerCreatedEvent('123', 'John Doe');
 
     eventDispatcher.dispatch(customerCreatedEvent);
 

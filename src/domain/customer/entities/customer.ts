@@ -13,12 +13,7 @@ export default class Customer extends AgreggateRoot {
     this._id = id;
     this._name = name;
     this.validate();
-  }
-
-  static create(id: string, name: string) {
-    const customer = new Customer(id, name);
-    customer.addEvent(new CustomerCreatedEvent());
-    return customer
+    this.addEvent(new CustomerCreatedEvent(this._id, this._name));
   }
 
   get id(): string {
